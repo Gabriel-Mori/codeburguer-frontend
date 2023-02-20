@@ -1,17 +1,20 @@
 import React from 'react'
+import { At, Key, SpinnerGap } from "phosphor-react";
+
 import {
   Container,
   LoginImage,
   ContainerItens,
   Label,
-  Input,
+
   Button,
   SignInLink
 
 } from './style'
 
 import  LoginImg  from '../../assets/login-image.svg'
-import  Logo  from '../../assets/logo-image.svg'
+import  Logo  from '../../assets/logo-fast.png'
+import Inputs from '../../components/Input';
 
 function Login() {
   return (
@@ -20,17 +23,25 @@ function Login() {
       <ContainerItens>
 
         <img  src={Logo} alt='logo'/>
-        <h1>Login</h1>
+        <h1>Entre na sua conta</h1>
+        
 
-        <Label>Email</Label>
-        <Input />
+            <Label>Email</Label>
+            <Inputs  
+            placeholder="E-mail de acesso"
+            icon={<At size={16} />}
 
+            />
+           
+            <Label>Senha</Label>
+            <Inputs  
+            placeholder="Senha de acesso"
+            icon={<Key size={16} />}
+            />
+        
 
-        <Label>Password</Label>
-        <Input />
-
-        <Button>SingIN</Button>
-        <SignInLink>Não possui conta? <a href='#'>SignUp</a></SignInLink>
+        <Button>Entrar</Button>
+        <SignInLink>Não possui conta? <a href='#'>Cadastre-se</a></SignInLink>
 
       </ContainerItens>
     </Container>

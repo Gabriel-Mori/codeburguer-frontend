@@ -34,7 +34,12 @@ flex-direction: column;
 margin-left: 1000px;
 
 
+form {
+  display: flex;
+flex-direction: column;
 
+
+}
 
 
 h1 {
@@ -55,7 +60,7 @@ background: #373737;
 
 `
 
-export const Label = styled.p`
+export const Label = styled.label`
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -67,36 +72,24 @@ export const Label = styled.p`
 
 `
 
-
-
-
-export const Button = styled.button`
-width: 333px;
-height: 50px;
+export const Input = styled.input`
 border: none;
-background: #17202A ;
-border-radius: 20px;
-cursor: pointer;
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 24px;
-text-align: center;
-color: #EEEEEE;
-margin-bottom: 25px;
-margin: 0 auto;
-margin-top: 150px;
+width: 100%;
+padding-left: 10px;
+font-size: 16px;
+`
 
-
-
-
-&:hover {
-  opacity: 0.8;
-}
-
-&:active {
-  opacity: 0.6;
-}
+export const InputContainer = styled.div`
+display:flex;
+align-items: center;
+width: 392px;
+height: 40px;
+border: ${props => (props.error ? '1px solid #CC1717' : '1px solid #9CA3AF')};
+border-radius: 10px;
+margin-bottom: 5px;
+padding-left: 10px;
+font-size: 16px;
+width: 100%;
 `
 
 export const SignInLink = styled.a`
@@ -113,10 +106,15 @@ color: #787878;
 text-decoration: underline;
 font-weight: 300;
 font-weight: bold;
-
-
 }
+`
 
+export const Error = styled.p`
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #CC1717;
 `
 
 

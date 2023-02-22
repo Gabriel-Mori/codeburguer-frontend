@@ -21,10 +21,10 @@ import {
 import RegisterImage from '../../assets/register-image.svg'
 import Logo from '../../assets/logo-fast.png'
 import api from '../../service/api'
-import Button from '../../components/Button'
+import { Button } from '../../components'
 
 
-function Login() {
+export function Register() {
   const schema = Yup.object().shape({
     name: Yup.string("Nome é obrigatório").required("Digite um nome"),
     email: Yup.string().email("Digite um E-mail válido").required('E-mail é obrigatório'),
@@ -133,4 +133,3 @@ function Login() {
     </Container>
   )
 }
-export default Login

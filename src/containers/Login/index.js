@@ -19,11 +19,11 @@ import {
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo-fast.png'
 import api from '../../service/api'
-import Button from '../../components/Button'
+import {Button} from '../../components'
 import { useUser} from '../../hooks/UserContext'
 
 
-function Login() {
+export function Login() {
   const history = useHistory()
   const {putUserData} = useUser()
 
@@ -101,4 +101,3 @@ function Login() {
     </Container>
   )
 }
-export default Login

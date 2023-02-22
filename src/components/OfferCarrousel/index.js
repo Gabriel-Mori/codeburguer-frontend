@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import api from '../../service/api'
 import Offer from '../../assets/offer.jpeg'
 import Carousel from 'react-elastic-carousel'
-import Button from '../../components/Button'
+import { Button } from '../../components'
 import formatCurrency from "../../utils/formatCurrency";
 
 import {
@@ -16,7 +16,7 @@ import {
 
 
 
-function OffersCarrousel(){
+export function OffersCarrousel(){
   const [offer, setOffer] = useState([])
 
 useEffect(() => {
@@ -76,5 +76,3 @@ return (
 )
 
 }
-
-export default OffersCarrousel

@@ -13,7 +13,6 @@ const putUserData = async (userInfo) => {
  await localStorage.setItem('codeburguer:userData', JSON.stringify(userInfo))
 }
 
-
 useEffect(() => {
 const loadUserData = async () => {
   const customerInfo = await localStorage.getItem('codeburguer:userData')

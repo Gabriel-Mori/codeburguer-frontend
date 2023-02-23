@@ -17,7 +17,7 @@ margin-left: 18px;
 
 p{
   font-size: 16px;
-  color: #17202A;
+  color: #9A9A9D;
 }
 
 `

@@ -58,7 +58,6 @@ export function Register() {
       toast.error("Falha ao cadastrar! Tente novamente")
     }
 
-    // console.log(response)
   };
 
 

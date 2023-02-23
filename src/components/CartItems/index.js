@@ -8,7 +8,6 @@ import { ShoppingCart, Trash } from "phosphor-react";
 export const CartItems = ({ product }) => {
 
   const { cartProducts, increaseProducts, decreaseProducts, deleteItemProduct } = useCart()
-  console.log(cartProducts)
 
   return (
     <Container>

@@ -2,15 +2,14 @@ import React, {useEffect, useState} from "react";
 
 import api from '../../service/api'
 import Category from '../../assets/category.jpeg'
-// import Offer from '../../assets/OFERTAS.png'
 import Carousel from 'react-elastic-carousel'
-import { Button } from '../../components'
 
 import {
   Container,
   CategoryImg,
   ContainerItems,
-  ImageCarroseul
+  ImageCarroseul,
+  Button
 } from './styles'
 
 
@@ -29,14 +28,7 @@ useEffect(() => {
   loadCategories()
 },[])
 
-// const breakPoints = [
-//   {width: 1, itemsToShow:1},
-//   {width: 400, itemsToShow:2},
-//   {width: 600, itemsToShow:3},
-//   {width: 900, itemsToShow:4},
-//   {width: 1300, itemsToShow:5},
-// ]
-//  breakPoints={breakPoints}
+
 return (
   <Container>
     <CategoryImg src={Category} alt="logo da categoria" />
@@ -49,7 +41,16 @@ return (
      categories && categories.map((item) => (
       <ContainerItems key={item.id}>
         <ImageCarroseul src={item.url} alt="imagem da categoria" />
-        <Button style={{width: '300px', marginTop: '10px'}} >{item.name}</Button>
+        <Button 
+        style={{width: '300px', marginTop: '10px'}}
+        to={{
+          pathname: '/produtos',
+          state: {categoryId: item.id}
+        }}
+        
+        >
+          {item.name}
+        </Button>
       </ContainerItems>
      ))
      }

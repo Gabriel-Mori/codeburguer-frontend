@@ -13,6 +13,10 @@ const putUserData = async (userInfo) => {
  await localStorage.setItem('codeburguer:userData', JSON.stringify(userInfo))
 }
 
+const logout = async () => {
+await localStorage.removeItem('codeburguer:userData')
+}
+
 useEffect(() => {
 const loadUserData = async () => {
   const customerInfo = await localStorage.getItem('codeburguer:userData')
@@ -26,7 +30,7 @@ loadUserData()
 },[])
 
   return (
-    <UserContext.Provider value={{putUserData,userData}}>
+    <UserContext.Provider value={{putUserData,userData, logout}}>
       {children}
     </UserContext.Provider>
   )

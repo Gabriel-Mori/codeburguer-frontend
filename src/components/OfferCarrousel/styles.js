@@ -54,4 +54,30 @@ margin-bottom: 10px;
 `
 
 
+export const Button = styled.button`
+height: 50px;
+border: none;
+background: #17202A;
+border-radius: 20px;
+cursor: pointer;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 24px;
+text-align: center;
+color: #EEEEEE;
+margin-top: 15px;
+text-decoration: none;
+display: flex;
+align-items:center;
+justify-content: center;
 
+&:hover {
+  opacity: 0.8;
+}
+
+&:active {
+  opacity: 0.6;
+}
+
+`

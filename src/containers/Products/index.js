@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import api from '../../service/api'
 import homeLogo from '../../assets/homelogo.jpeg'
+import PropTypes from 'prop-types'
+
 
 import {
   HomeImg,
@@ -14,11 +16,18 @@ import formatCurrency from "../../utils/formatCurrency";
 
 
 
-export function Product() {
+export function Product({location: {state}}) {
+
+  let categoryId = 0
+  
+  if(state?.categoryId){
+    categoryId = state.categoryId
+  }
+
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
-  const [activeCategory, setActiveCategory] = useState(0)
+  const [activeCategory, setActiveCategory] = useState(categoryId)
 
 
   useEffect(() => {
@@ -88,4 +97,8 @@ export function Product() {
     </Container>
   )
 
+}
+
+Product.propTypes = {
+  location: PropTypes.object
 }

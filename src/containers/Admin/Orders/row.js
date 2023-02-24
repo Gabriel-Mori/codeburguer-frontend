@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
@@ -6,23 +6,44 @@ import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import api from '../../../service/api'
 
-import { Container } from './styles'
+import { ProductsImg, ReactSelectStyle } from './styles'
+import status from "./order-status";
 
 
-function Row({ row }) {
+function Row({ row, orders, setOrders }) {
   const [open, setOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+
+
+  const setNewStatus = async (id, status) => {
+    setIsLoading(true)
+    try {
+      await api.put(`/orders/${id}`, { status })
+
+      const newOrders = orders.map((order) => {
+        return order._id === id ? {...order, status} : order
+      })
+      setOrders(newOrders)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+    }
+
+  }
+
 
   return (
     <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+      <TableRow className="table" sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell>
           <IconButton
             aria-label="expand row"
@@ -37,7 +58,19 @@ function Row({ row }) {
         </TableCell>
         <TableCell>{row.name}</TableCell>
         <TableCell>{row.date}</TableCell>
-        <TableCell>{row.status}</TableCell>
+        <TableCell>
+          <ReactSelectStyle
+            defaultValue={status.find((options) => options.value === row.status) || null}
+            placeholder='Status'
+            menuPortalTarget={document.body}
+            options={status.filter((sts) => sts.value !== 'Todos')}
+            onChange={newStatus => {
+              setNewStatus(row.orderId, newStatus.value)
+            }}
+            isLoading={isLoading}
+          />
+
+        </TableCell>
         <TableCell></TableCell>
       </TableRow>
       <TableRow>
@@ -65,7 +98,7 @@ function Row({ row }) {
                       <TableCell>{productRow.name}</TableCell>
                       <TableCell>{productRow.category}</TableCell>
                       <TableCell>
-                        <img src={productRow.url} alt="Imagem do produto" />
+                        <ProductsImg src={productRow.url} alt="Imagem do produto" />
                       </TableCell>
                     </TableRow>
                   ))}
@@ -80,12 +113,14 @@ function Row({ row }) {
 }
 
 Row.propTypes = {
+  orders: PropTypes.array,
+  setOrders: PropTypes.func,
   row: PropTypes.shape({
     name: PropTypes.string.isRequired,
     orderId: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
-  
+
     products: PropTypes.arrayOf(
       PropTypes.shape({
         quantity: PropTypes.number.isRequired,

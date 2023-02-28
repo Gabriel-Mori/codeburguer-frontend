@@ -33,7 +33,7 @@ const { logout } = useUser()
       ))}
       <hr></hr>
 
-      <ItemContainer style={{position: 'absolute', bottom: '30px'}}>
+      <ItemContainer style={{position: 'fixed', bottom: '30px'}}>
         <ExitToAppIcon/>
       <ListLink to='/login' onClick={logout}>
         Sair

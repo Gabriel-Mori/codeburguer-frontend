@@ -71,6 +71,10 @@ const cartIndex = cartProducts.findIndex(pd => pd.id === productId)
    } 
 }
 
+const clear = () => {
+setCartProducts([])
+}
+
 
 useEffect(() => {
 const loadUserData = async () => {
@@ -85,7 +89,7 @@ loadUserData()
 },[])
 
   return (
-    <CartContext.Provider value={{putProductInCart, cartProducts, increaseProducts, decreaseProducts, deleteItemProduct  }}>
+    <CartContext.Provider value={{putProductInCart, cartProducts, increaseProducts, decreaseProducts, deleteItemProduct, clear  }}>
       {children}
     </CartContext.Provider>
   )

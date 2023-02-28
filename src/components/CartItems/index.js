@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from '../../hooks/CartContext'
 import formatCurrency from '../../utils/formatCurrency'
 import { Container, Header, Body, EmptyCart } from './styles'
 import { ShoppingCart, Trash } from "phosphor-react";
 
 
+
 export const CartItems = ({ product }) => {
+
 
   const { cartProducts, increaseProducts, decreaseProducts, deleteItemProduct } = useCart()
 

@@ -14,13 +14,13 @@ import {
   SignInLink,
   InputContainer,
   Input,
-  Error
 } from './style'
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo-fast.png'
 import api from '../../service/api'
 import {Button} from '../../components'
 import { useUser} from '../../hooks/UserContext'
+import { Error } from '../../components/ErrorMessage/styles';
 
 
 export function Login() {

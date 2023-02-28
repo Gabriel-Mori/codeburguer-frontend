@@ -20,7 +20,7 @@ import status from "./order-status";
 function Row({ row, orders, setOrders }) {
   const [open, setOpen] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-
+    console.log(orders)
 
 
   const setNewStatus = async (id, status) => {
@@ -37,6 +37,8 @@ function Row({ row, orders, setOrders }) {
     } finally {
       setIsLoading(false)
     }
+  
+
 
   }
 

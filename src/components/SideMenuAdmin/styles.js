@@ -5,13 +5,8 @@ export const Container = styled.div`
 background: #F9F9F9;
 box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.15);
 width: 300px;
-top: 0;
-left: 0;
+overflow: hidden;
     
-
-
-
-
 hr {
   margin: 70px 30px;
   height: 2px;

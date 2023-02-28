@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import { Container, ContainerItems } from './styles'
 import paths from "../../constants/paths";
 import NewProducts from "./NewProducts";
+import EditProducts from "./EditProducts";
 
 
 export function Admin({ match: {path}}) {
@@ -20,6 +21,7 @@ export function Admin({ match: {path}}) {
         {path === paths.Orders && <Orders /> }
         {path === paths.Products && <ListProducts />}
         {path === paths.NewProducts && <NewProducts />}
+        {path === paths.EditProducts && <EditProducts />}
       </ContainerItems>
     </Container>
   )

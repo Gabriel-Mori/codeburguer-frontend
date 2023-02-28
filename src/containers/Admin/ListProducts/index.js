@@ -11,13 +11,17 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import formatCurrency from '../../../utils/formatCurrency'
 import { FiEdit } from 'react-icons/fi'
+import paths from "../../../constants/paths";
+import { useHistory } from 'react-router-dom'
+
+
+
+
 
 
 import {
   Container,
   Image,
-  ButtonEdit
-
 } from './styles'
 import api from "../../../service/api";
 
@@ -25,7 +29,7 @@ import api from "../../../service/api";
 
 function ListProducts() {
   const [products, setProducts] = useState()
-
+  const {push } = useHistory()
 
 
   useEffect(() => {
@@ -45,7 +49,10 @@ function ListProducts() {
     return <HighlightOffIcon style={{ color: 'red' }} />
   }
 
+const editProducts = (product) => {
+push(paths.EditProducts, { product })
 
+}
 
   return (
     <Container>
@@ -74,7 +81,14 @@ function ListProducts() {
                 <TableCell align="center">{isOffer(product.offer)}</TableCell>
                 <TableCell align="center"> <Image src={product.url} alt="Imagem do produto" />
                 </TableCell>
-                <TableCell align="center"><ButtonEdit> <FiEdit size={20} /> </ButtonEdit></TableCell>
+                <TableCell align="center"> 
+                <FiEdit 
+                className="Edit"  
+                size={20} 
+                onClick={() => editProducts(product)}
+                
+                /> 
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

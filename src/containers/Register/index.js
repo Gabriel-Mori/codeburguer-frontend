@@ -15,13 +15,14 @@ import {
   SignInLink,
   InputContainer,
   Input,
-  Error
+
 } from './style'
 
 import RegisterImage from '../../assets/register-image.svg'
 import Logo from '../../assets/logo-fast.png'
 import api from '../../service/api'
 import { Button } from '../../components'
+import { Error } from '../../components/ErrorMessage/styles';
 
 
 export function Register() {
